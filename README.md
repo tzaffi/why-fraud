@@ -9,6 +9,7 @@ This is based on Kaggle's [IEEE-CIS Fraud Detection](https://www.kaggle.com/c/ie
 To run locally, the following neeed to be installed:
 
 * `make`
+* `awk`
 * the `docker` family of applications
 
 ### Available commands:
