@@ -62,6 +62,16 @@ down:
 
 rebuild: down build up
 
+rm:
+	docker-compose rm
+
+clean:	stop rm
+
+rmi:
+	docker rmi $(docker images | grep 'whyfraud')
+
+wipeout: clean rmi
+
 # rebuild-ui:
 # 	cd frontend && yarn build && cd .. &&  \
 # 	docker-compose restart app
