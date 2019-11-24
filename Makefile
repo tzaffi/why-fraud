@@ -15,6 +15,10 @@ help:
 	@echo ' make shell      connect to app container in new bash shell  '
 	@echo ' make dbshell    connect to postgres inside db container     '
 	@echo '                                                             '
+	@echo '                                                             '
+	@echo ' make clean      stop the running containers and remove them '
+	@echo ' make wipeout    like make clean but also removes the images '
+	@echo '                                                             '
 
 # future:
 # 	@echo 'Makefile for managing "why fraud" project                    '
@@ -62,13 +66,17 @@ down:
 
 rebuild: down build up
 
+
 rm:
 	docker-compose rm
 
-clean:	stop rm
+volume-rm:
+	docker volume ls | grep 'why-fraud' | awk '{print $$2}' | xargs docker volume rm
+
+clean:	stop rm volume-rm
 
 rmi:
-	docker rmi $(docker images | grep 'whyfraud')
+	docker images | grep 'whyfraud' | awk '{print $$3}' | xargs docker rmi
 
 wipeout: clean rmi
 

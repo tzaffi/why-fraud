@@ -32,10 +32,15 @@ To run locally, the following neeed to be installed:
 
 ### Cleaning up
 
-`make clean`
+#### Clean up everything, except the images which took so long to build!!!
 
-1. docker rm *VARIOUS IMAGES*
-2. docker rmi why-fraud-explore:latest
+`make clean` 
+
+Note: this only works when the container is running. So you might need to do a `make up` before running this command
+
+#### Clean up everything, INCLUDING the images:
+
+`make wipeout`
 
 ### Where did all my Jupyter notebooks go?
 
